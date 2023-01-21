@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Nav, Navbar,  } from 'react-bootstrap'
+import { NavLink } from 'react-router-dom'
 import { CartWidget } from '../CartWidget/CartWidget'
 
 export const NavBar = () => {
@@ -7,14 +8,15 @@ export const NavBar = () => {
     <>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">Dororo</Navbar.Brand>
+        <NavLink to="/">Dororo</NavLink>
         <CartWidget />
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Pcb</Nav.Link>
-            <Nav.Link href="#pricing">Keyboards</Nav.Link>
-            
+            <NavLink className={({isActive})=> isActive ? "btn btn-success" : "btn btn-dark"} to="/categoria/Pcb">Pcb</NavLink>
+            <NavLink className={({isActive})=> isActive ? "btn btn-success" : "btn btn-dark"} to="/categoria/Keycaps">Keycaps</NavLink>
+            <NavLink className={({isActive})=> isActive ? "btn btn-success" : "btn btn-dark"} to="/categoria/Plates">Plates</NavLink>
+            <NavLink className={({isActive})=> isActive ? "btn btn-success" : "btn btn-dark"} to="/categoria/Keyboards">Keyboards</NavLink>
           </Nav>
           
           <Nav>
