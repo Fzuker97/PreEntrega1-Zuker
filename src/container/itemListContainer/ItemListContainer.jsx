@@ -20,14 +20,15 @@ export const ItemListContainer = ( {welcome}) => {
       .catch(err=> console.log(err))
       .finally(()=> setLoading(false))
       }
-    }else {
+    else {
       gFetch()
       .then(respuestaPromesa =>{
         setProductos(respuestaPromesa)
       })
       .catch(err=> console.log(err))
       .finally(()=> setLoading(false))
-    }, [categoryId ])
+    }}
+    , [categoryId ])
     
     
  
