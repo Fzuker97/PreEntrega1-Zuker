@@ -11,10 +11,11 @@ let productos = [
     {id:'10', categoria:'Keycaps', name:'Black Keycaps', price: 400, foto:'/stock/KeycapsNegras.jpg'}
 ]
 
-export const gFetch =() =>{
+export const gFetch =(id) =>{
+    console.log(id)
     return new Promise((resolve, reject)=>{
         setTimeout(()=>{
-            resolve(productos)
-        }, 3000)
+            resolve(id ? productos.find(prod => prod.id === id) : productos)
+        }, 1000)
     })
 }

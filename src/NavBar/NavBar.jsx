@@ -15,8 +15,8 @@ export const NavBar = () => {
           <Nav className="me-auto">
             <NavLink className={({isActive})=> isActive ? "btn btn-success" : "btn btn-dark"} to="/categoria/Pcb">Pcb</NavLink>
             <NavLink className={({isActive})=> isActive ? "btn btn-success" : "btn btn-dark"} to="/categoria/Keycaps">Keycaps</NavLink>
-            <NavLink className={({isActive})=> isActive ? "btn btn-success" : "btn btn-dark"} to="/categoria/Plates">Plates</NavLink>
-            <NavLink className={({isActive})=> isActive ? "btn btn-success" : "btn btn-dark"} to="/categoria/Keyboards">Keyboards</NavLink>
+            <NavLink className={({isActive})=> isActive ? "btn btn-success" : "btn btn-dark"} to="/categoria/Plate">Plates</NavLink>
+            <NavLink className={({isActive})=> isActive ? "btn btn-success" : "btn btn-dark"} to="/categoria/Teclado">Keyboards</NavLink>
           </Nav>
           
           <Nav>
