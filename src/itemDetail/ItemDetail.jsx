@@ -1,13 +1,17 @@
+import { useState } from "react"
+import { Link } from "react-router-dom"
 import { useCartContext } from "../CartContext/CartContext"
 import { ItemCount } from "../ItemCount/ItemCount"
 
 const ItemDetail = ({producto}) =>{
+    const [isInCount, setIsInCount] = useState(true)
     const {agregarCarrito, cartList} = useCartContext()
 
     const onAdd = (cant) => {
         console.log(cant)
 
         agregarCarrito({... producto, cantidad: cant})
+        setIsInCount(false)
     }
     
     
@@ -22,7 +26,19 @@ const ItemDetail = ({producto}) =>{
                         <h4>Precio: {producto.price}</h4>
                 </div>
                 <div className="col-6">
-                    <ItemCount onAdd={onAdd}/>
+                    {isInCount ?
+                        <ItemCount onAdd={onAdd}/>
+                :
+                    <>
+                        <Link to={'/cart'}>
+                            <button className="btn btn-outline-primary">Ir Al Carrito</button>
+                        </Link>
+                        <Link to={'/'}>
+                            <button className="btn btn-outline-success">Seguir Comprando</button>
+                        </Link>
+                    </>
+                }
+                    
                 </div>
 
             </div>
