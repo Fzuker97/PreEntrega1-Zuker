@@ -16,7 +16,9 @@ export const ItemListContainer = ( {welcome}) => {
   const {categoryId} = useParams()
   
   useEffect( () => {
-   
+    const db = getFirestore()
+    const queryCollection = collection(db, 'items')
+    
     if (categoryId) {
       const queryCollectionFilter = query(queryCollection, where('categoria', '==', categoryId))
       getDocs(queryCollectionFilter)
@@ -27,9 +29,6 @@ export const ItemListContainer = ( {welcome}) => {
       .finally(()=> setLoading(false))
 
     } else {
-
-      const db = getFirestore()
-      const queryCollection = collection(db, 'items')
 
       getDocs(queryCollection)
     .then(respuestaPromesa => {

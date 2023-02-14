@@ -1,4 +1,4 @@
-import { doc, getFirestore } from "firebase/firestore"
+import { doc, getFirestore, getDoc } from "firebase/firestore"
 import { useState } from "react"
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
