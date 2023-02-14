@@ -2,8 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { gFetch } from '../../gFetch';
+//import { gFetch } from '../../gFetch';
 import ItemList from '../../itemList/itemList';
+import Loader from '../../Loader/Loader';
+import { gFetch } from '../../firebase';
 
 
 
@@ -39,7 +41,7 @@ export const ItemListContainer = ( {welcome}) => {
          { loading 
       ?
         <center>
-          <h1>Cargando...</h1>
+          <Loader />
           </center>
       :
           <ItemList productos={productos}/>

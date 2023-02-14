@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 const Item = ({producto}) =>{
     return(
-    <div key={producto.id} className='card w-25 mt-5 shadow ml-5'>
+    <div key={producto.id} className='card w-25 mt-5 shadow mx-5'>
           <div className='card-head'>
                 {producto.name}
               </div>

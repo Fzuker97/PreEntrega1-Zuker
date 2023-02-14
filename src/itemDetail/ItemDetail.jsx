@@ -1,6 +1,19 @@
+import { useCartContext } from "../CartContext/CartContext"
+import { ItemCount } from "../ItemCount/ItemCount"
+
 const ItemDetail = ({producto}) =>{
+    const {agregarCarrito, cartList} = useCartContext()
+
+    const onAdd = (cant) => {
+        console.log(cant)
+
+        agregarCarrito({... producto, cantidad: cant})
+    }
+    
+    
+
     return(
-        <div className="container"> 
+        <div className="container pt-5"> 
             <div className="row">
                 <div className="col-6">
                         <img src= {producto.foto} className="w-50"/>
@@ -9,7 +22,7 @@ const ItemDetail = ({producto}) =>{
                         <h4>Precio: {producto.price}</h4>
                 </div>
                 <div className="col-6">
-
+                    <ItemCount onAdd={onAdd}/>
                 </div>
 
             </div>

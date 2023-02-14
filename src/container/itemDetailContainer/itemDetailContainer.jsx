@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { gFetch } from "../../gFetch"
+import { gFetch } from "../../firebase"
 import ItemDetail from "../../itemDetail/ItemDetail"
 
 const ItemDetailContainer = () => {
