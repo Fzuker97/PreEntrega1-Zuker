@@ -23,6 +23,7 @@ export async function gFetch(){
   const docsData = snapshot.docs.map((doc) => {
     return {...doc.data(), id: doc.id}
   });
+  console.log(docsData)
   return(docsData);
 }
 
@@ -39,5 +40,13 @@ export async function getSingleItem(itemid){
 export async function getItemByCategory(categoryId){
   const productsCollectionRef = collection(db, "productos");
   const q = query(productsCollectionRef, where("categoria", "==", categoryId));
-  const snapshot = await getDoc(q);
+  const snapshot = await getDocs(q);
+
+  const itemsFilteredArray = snapshot.docs.map((doc) => {
+    const itemComplete = doc.data();
+    itemComplete.id = doc.id;
+    return itemComplete;
+  });
+
+  return itemsFilteredArray; 
 }

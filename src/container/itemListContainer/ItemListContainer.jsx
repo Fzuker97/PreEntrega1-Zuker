@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 //import { gFetch } from '../../gFetch';
 import ItemList from '../../itemList/itemList';
 import Loader from '../../Loader/Loader';
-import { gFetch } from '../../firebase';
+import { getItemByCategory, gFetch } from '../../firebase';
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 
 
@@ -20,22 +20,11 @@ export const ItemListContainer = ( {welcome}) => {
     const queryCollection = collection(db, 'items')
     
     if (categoryId) {
-      const queryCollectionFilter = query(queryCollection, where('categoria', '==', categoryId))
-      getDocs(queryCollectionFilter)
-      .then(respuestaPromesa => {
-        setProductos(respuestaPromesa.docs.map(prod => ( { id: prod.id, ...prod.data()} )))
-      })
-      .catch(err => console.log(err))
-      .finally(()=> setLoading(false))
+     getItemByCategory(categoryId).then(res=> setProductos(res)).then(setLoading(false))
 
     } else {
-
-      getDocs(queryCollection)
-    .then(respuestaPromesa => {
-      setProductos(respuestaPromesa.docs.map(prod => ( { id: prod.id, ...prod.data()} )))
-    })
-    .catch(err => console.log(err))
-    .finally(()=> setLoading(false))
+      gFetch().then(res=> setProductos(res)).then(setLoading(false))
+      
     }
   }, [categoryId])
 

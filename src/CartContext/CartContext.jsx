@@ -39,7 +39,8 @@ export const CartContextProvider = ({children})=>{
             agregarCarrito, 
             vaciarCarrito, 
             cantidadTotal,
-            eliminarItem
+            eliminarItem,
+            precioTotal
             }}>
             {children}
         </CartContext.Provider>

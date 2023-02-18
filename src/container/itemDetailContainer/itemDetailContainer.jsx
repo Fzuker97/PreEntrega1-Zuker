@@ -2,8 +2,9 @@ import { doc, getFirestore, getDoc } from "firebase/firestore"
 import { useState } from "react"
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { gFetch } from "../../firebase"
+import { getSingleItem, gFetch } from "../../firebase"
 import ItemDetail from "../../itemDetail/ItemDetail"
+
 
 const ItemDetailContainer = () => {
    const[producto, setProducto] = useState ({})
@@ -12,13 +13,9 @@ const ItemDetailContainer = () => {
 
 
     useEffect(()=>{
-        const db = getFirestore()
-        const queryDoc = doc(db, 'items', detalleId)
-        getDoc(queryDoc)
-        .then(results => setProducto( { id: results.id, ...results.data()}) )
-        .catch(err => console.error(err))
+       getSingleItem(detalleId).then(result => setProducto(result))
+       .catch(err => console.error(err))
     }, [])
-    console.log(producto)
     return (
         <ItemDetail producto={producto} />
     )
